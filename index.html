@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Clone - Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111;
+        }
+
+        /* --- Navbar Styles --- */
+        nav {
+            background-color: #02042b;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(2, 4, 43, 0.95);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #2b84ea; /* Razorpay Blue */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Buttons */
+        .btn-login {
+            background-color: transparent;
+            border: 1px solid #2b84ea;
+            color: #2b84ea !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: rgba(43, 132, 234, 0.1);
+        }
+
+        .btn-signup {
+            background-color: #ffffff;
+            color: #2b84ea !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-signup:hover {
+            background-color: #2b84ea;
+            color: #ffffff !important;
+        }
+
+        /* --- Hero Section Styles --- */
+        .hero {
+            background-color: #02042b;
+            color: white;
+            padding: 180px 10% 120px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            /* The classic Razorpay slanted cut at the bottom */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #a9b3cc;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 80%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: #2b84ea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(43, 132, 234, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #1a6dca;
+        }
+
+        /* Hero Graphic Placeholder (CSS Art) */
+        .hero-graphic {
+            width: 450px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .hero-graphic::before {
+            content: "Mockup Dashboard UI";
+            color: rgba(255,255,255,0.5);
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        /* --- Feature Section --- */
+        .features {
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            color: #02042b;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #02042b;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">Razorpay<span>.</span></a>
+        <div class="nav-links">
+            <a href="#">Payments</a>
+            <a href="#">Banking+</a>
+            <a href="#">Payroll</a>
+            <a href="#">Partners</a>
+            <a href="#">Resources</a>
+            <a href="#">Support</a>
+            <button class="btn-login" onclick="alert('Login Clicked!')">Log In</button>
+            <button class="btn-signup" onclick="alert('Signup Clicked!')">Sign Up <span style="font-size:18px;">&rarr;</span></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Power your finance, grow your business</h1>
+            <p>Accept payments from customers. Automate payouts to vendors & employees. Never run out of working capital.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="alert('Redirecting to Sign Up...')">Sign Up Now</button>
+            </div>
+        </div>
+        
+        <div class="hero-graphic"></div>
+    </section>
+
+    <section class="features">
+        <h2>Accept Payments with Razorpay Payment Suite</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Payment Links</h3>
+                <p>Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Payment Pages</h3>
+                <p>Take your store online instantly with zero coding. Accept international & domestic payments.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Subscriptions</h3>
+                <p>Automate recurring transactions with ease. Collect payments for SaaS and OTT platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JS to add a shadow to the navbar when the user scrolls down
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Adding simple console logs to show JS functionality for an assignment
+        console.log("Razorpay clone initialized by a 3rd Semester CS Student!");
+    </script>
+</body>
+</html>
